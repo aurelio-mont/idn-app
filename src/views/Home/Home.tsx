@@ -2,9 +2,11 @@ import { StyleSheet, View } from "react-native";
 import Header from "../../components/Header";
 import fetchApi from "../../utils/fetch";
 import { useEffect, useState } from "react";
+import ToDaysImage from "../../components/ToDaysImage";
+import { PostImage } from "../../types";
 
 export default function Home() {
-  const [toDaysImage, setToDaysImage] = useState();
+  const [toDaysImage, setToDaysImage] = useState<PostImage>({});
 
   useEffect(() => {
     const loadToDaysImages = async () => {
@@ -12,7 +14,7 @@ export default function Home() {
         const toDaysImageResponse = await fetchApi();
         setToDaysImage(toDaysImageResponse);
       } catch (error) {
-        setToDaysImage(undefined);
+        setToDaysImage({});
       }
     };
 
@@ -23,6 +25,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Header />
+      <ToDaysImage {...toDaysImage} />
     </View>
   );
 }
