@@ -1,17 +1,10 @@
 import { Platform, SafeAreaView, StyleSheet, View } from "react-native";
-import Home from "./src/views/Home";
+import Routes from "./src/routes";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          paddingTop: Platform.OS === "android" ? 30 : 0,
-        }}
-      >
-        <Home />
-      </View>
+      <Routes />
     </SafeAreaView>
   );
 }
